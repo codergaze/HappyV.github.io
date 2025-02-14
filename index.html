@@ -123,7 +123,7 @@
             <p class="caption">Caption for Image 4</p>
         </div>
         <div class="image-container">
-            <img src="images/iamge5.jpg" alt="Image 5">
+            <img src="images/iamge.jpg" alt="Image 5">
             <p class="caption">Caption for Image 5</p>
         </div>
         <div class="image-container">
@@ -144,13 +144,14 @@
             images.forEach((image, index) => {
                 let rect = image.getBoundingClientRect();
 
-                if (rect.top < window.innerHeight - 150 && rect.bottom > 100) {
-                    image.classList.add("visible");
-
-                    // Delay caption appearance
+                if (rect.top < window.innerHeight - 50 && rect.bottom > 100) {
+                    setTimeout(() => {
+                        image.classList.add("visible");
+                    }, index * 300);
+                    
                     setTimeout(() => {
                         captions[index].classList.add("caption-visible");
-                    }, 500);
+                    }, index * 500);
                 } else {
                     image.classList.remove("visible");
                     captions[index].classList.remove("caption-visible");
@@ -158,27 +159,15 @@
             });
 
             let lastImage = images[images.length - 1];
-            if (lastImage.getBoundingClientRect().top < window.innerHeight - 100) {
-                let valentineSection = document.getElementById("valentine-container");
-                valentineSection.style.opacity = 1;
-                valentineSection.style.zIndex = 10;
-                spawnHearts();
+            if (lastImage.getBoundingClientRect().top < window.innerHeight - 50) {
+                setTimeout(() => {
+                    let valentineSection = document.getElementById("valentine-container");
+                    valentineSection.style.opacity = 1;
+                    valentineSection.style.zIndex = 10;
+                    spawnHearts();
+                }, 2000);
             }
         });
-
-        function spawnHearts() {
-            for (let i = 0; i < 30; i++) {
-                let heart = document.createElement("div");
-                heart.classList.add("heart");
-                heart.style.left = `${Math.random() * 100}vw`;
-                heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
-                document.body.appendChild(heart);
-
-                setTimeout(() => {
-                    heart.remove();
-                }, 5000);
-            }
-        }
     </script>
 </body>
 </html>
