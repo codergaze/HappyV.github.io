@@ -136,7 +136,7 @@
         <h2>Happy Valentine's</h2>
     </div>
 
-    <script>
+   <script>
         document.addEventListener("scroll", function() {
             let images = document.querySelectorAll(".image-container");
             let captions = document.querySelectorAll(".caption");
@@ -144,14 +144,14 @@
             images.forEach((image, index) => {
                 let rect = image.getBoundingClientRect();
 
-                if (rect.top < window.innerHeight - 50 && rect.bottom > 100) {
+                if (rect.top < window.innerHeight - 100 && rect.bottom > 150) {
                     setTimeout(() => {
                         image.classList.add("visible");
-                    }, index * 300);
+                    }, index * 800);
                     
                     setTimeout(() => {
                         captions[index].classList.add("caption-visible");
-                    }, index * 500);
+                    }, index * 1200);
                 } else {
                     image.classList.remove("visible");
                     captions[index].classList.remove("caption-visible");
@@ -159,13 +159,13 @@
             });
 
             let lastImage = images[images.length - 1];
-            if (lastImage.getBoundingClientRect().top < window.innerHeight - 50) {
+            if (lastImage.getBoundingClientRect().top < window.innerHeight - 100) {
                 setTimeout(() => {
                     let valentineSection = document.getElementById("valentine-container");
                     valentineSection.style.opacity = 1;
                     valentineSection.style.zIndex = 10;
                     spawnHearts();
-                }, 2000);
+                }, 6000);
             }
         });
     </script>
